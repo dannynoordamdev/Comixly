@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 router = APIRouter()
 
 
+# Async function to fetch the url
 async def fetch_neo_data(api_key: str, days: int = 3):
     start_date = datetime.today().date() - timedelta(days=3)
     end_date = datetime.today().date() + timedelta(days=days)
@@ -24,6 +25,7 @@ async def fetch_neo_data(api_key: str, days: int = 3):
         )
 
 
+# function to process the retrieved data and return a formatted summary.
 def process_neo_data(neo_json: dict):
     neo_list = []
     near_earth_objects = neo_json.get("near_earth_objects", {})
@@ -65,10 +67,45 @@ def process_neo_data(neo_json: dict):
     return summary
 
 
-## Request to fetch near earth objects within a 3 day period
+## Request to fetch near earth objects that uses both functions.
 @router.get("/nasa/near_earth_objects", status_code=status.HTTP_200_OK)
 async def near_earth_objects(settings: Settings = Depends(get_settings)):
     api_key = settings.nasa_api_key
     neo_data = await fetch_neo_data(api_key)
     summary = process_neo_data(neo_data)
     return summary
+
+
+## Request to fetch daily image of NASA
+@router.get("/nasa/image_of_the_day", status_code=status.HTTP_200_OK)
+async def get_daily_image(settings: Settings = Depends(get_settings)):
+    api_key = settings.nasa_api_key
+    url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
+
+    async with httpx.AsyncClient(timeout=10) as client:
+        response = await client.get(url)
+
+    if response.status_code == 200:
+        pass
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No image URL found in NASA response.",
+        )
+
+    data = response.json()
+    daily_image_url = data.get("url")
+    daily_image_description = data.get("explanation")
+    daily_image_title = data.get("title")
+
+    if not daily_image_url and not daily_image_description and not daily_image_title:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="No image URL found in NASA response.",
+        )
+
+    return {
+        "title": daily_image_title,
+        "details": daily_image_description,
+        "url": daily_image_url,
+    }

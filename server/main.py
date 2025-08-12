@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers.nasa import router as nasa_router
 
 app = FastAPI()
-app.include_router(nasa_router, prefix="/test")
+app.include_router(nasa_router)
 
 origins = ["http://localhost:5173"]
 app.add_middleware(
