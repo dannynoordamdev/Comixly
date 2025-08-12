@@ -1,10 +1,10 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers.test import router as test_router
+from routers.nasa import router as nasa_router
 
 app = FastAPI()
-app.include_router(test_router, prefix="/test")
+app.include_router(nasa_router, prefix="/test")
 
 origins = ["http://localhost:5173"]
 app.add_middleware(
