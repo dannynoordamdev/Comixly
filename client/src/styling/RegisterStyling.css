@@ -1,0 +1,33 @@
+.login-container{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  width: 450px;
+}
+
+.input-group{
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 10px;
+}
+
+.input-group input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 0px solid;
+    background-color: rgba(125, 139, 152, 0.387);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.61);
+
+}
+
+.input-group button{
+    margin-top: 15px;
+    width: 100%;
+    
+}
