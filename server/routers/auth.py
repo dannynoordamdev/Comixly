@@ -14,7 +14,7 @@ from pydantic import BaseModel, Field
 router = APIRouter()
 
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oath2_bearer = OAuth2PasswordBearer(tokenUrl="/auth/token")
+oath2_bearer = OAuth2PasswordBearer(tokenUrl="/token")
 
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
@@ -80,11 +80,14 @@ class UserResponse(BaseModel):
 
 
 ## Endpoint for creating a new User
-@router.post("/auth", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED
+)
 async def create_user(db: db_dep, create_user_request: UserRequestInput):
     new_user = Users(
         email=create_user_request.email,
         hashed_password=bcrypt_context.hash(create_user_request.password),
+        is_activated=False,
     )
     if db.query(Users).filter(Users.email == new_user.email).first():
         raise HTTPException(

@@ -1,5 +1,5 @@
 from database import Base
-from sqlalchemy import Column, ForeignKey, Integer, String, event
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, event
 from sqlalchemy.orm import relationship
 
 
@@ -8,6 +8,7 @@ class Users(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True)
     hashed_password = Column(String)
+    is_activated = Column(Boolean)
     profile = relationship(
         "UserProfile", back_populates="user", cascade="all, delete-orphan"
     )
@@ -20,7 +21,8 @@ class UserProfile(Base):
     username = Column(String, unique=True, nullable=True)
     bio = Column(String, nullable=True)
     avatar_url = Column(String, nullable=True)
-    location = Column(String, nullable=True)
+    country = Column(String, nullable=True)
+    city = Column(String, nullable=True)
     user = relationship("Users", back_populates="profile")
 
 
