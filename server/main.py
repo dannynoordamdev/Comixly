@@ -13,6 +13,8 @@ app.include_router(nasa_router)
 app.include_router(auth_router, tags=["Authentication"])
 app.include_router(user_router, tags=["Authentication"])
 app.include_router(iss_socket)
+
+
 Base.metadata.create_all(bind=engine)
 
 origins = ["http://localhost:5173"]

@@ -1,13 +1,13 @@
 import asyncio
 
 import httpx
-from fastapi import APIRouter, WebSocket
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 router = APIRouter()
 
 
 async def fetch_iss_location():
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=5.0) as client:
         r = await client.get("http://api.open-notify.org/iss-now.json")
         data = r.json()
         return {
@@ -17,10 +17,19 @@ async def fetch_iss_location():
         }
 
 
-@router.websocket("/ws/iss")
+@router.websocket("/iss")
 async def websocket_iss(websocket: WebSocket):
     await websocket.accept()
-    while True:
-        data = await fetch_iss_location()
-        await websocket.send_json(data)
-        await asyncio.sleep(1)
+    try:
+        while True:
+            try:
+                data = await fetch_iss_location()
+            except Exception as e:
+                await websocket.send_json({"error": str(e)})
+                await asyncio.sleep(3)
+                continue
+
+            await websocket.send_json(data)
+            await asyncio.sleep(3)
+    except WebSocketDisconnect:
+        print("Client disconnected")
