@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import httpx
 from config import Settings, get_settings
@@ -109,3 +109,28 @@ async def get_daily_image(settings: Settings = Depends(get_settings)):
         "details": daily_image_description,
         "url": daily_image_url,
     }
+
+## Request to fetch daily photos taken by NASA Rover on Mars:
+@router.get("/nasa/rover/daily", status_code=status.HTTP_200_OK)
+async def retrieve_daily_rover_content(settings: Settings = Depends(get_settings)):
+    api_key = settings.nasa_api_key
+    date = (datetime.now(timezone.utc) - timedelta(days=1)).date()    
+    print(f"Fetching NASA for: {date}")
+    url = f"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date={date}&api_key={api_key}"
+    
+    async with httpx.AsyncClient(timeout=10) as client:
+        response = await client.get(url)
+
+    if response.status_code != 200:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"NASA API request failed: {response.text}",
+        )
+
+    photos = response.json().get("photos", [])
+    if not photos:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No rover photos found for {date}.",
+        )
+    return photos
