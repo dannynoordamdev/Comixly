@@ -1,45 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from '../src/components/pages/Home';
-import Login from '../src/components/pages/LoginPage';
-import Dashboard from '../src/components/pages/Dashboard';
-import NotFound from '../src/components/pages/NotFound';
+import React, { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./components/pages/Home";
+import LoginPage from "./components/pages/LoginPage";
+import RegisterPage from "./components/pages/RegisterPage";
+import Dashboard from "./components/pages/Dashboard";
+import NotFound from "./components/pages/NotFound";
+import Profile from "./components/pages/Profile.jsx";
 
-// Auth check from asp.net core backend
-const checkAuthentication = async () => {
-  try {
-    const response = await fetch('/api/auth/me', {
-      credentials: 'include',
-    });
-    if (response.ok) {
-      const data = await response.json();
-      return data.isAuthenticated;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    console.error('Error checking authentication:', error);
-    return false;
-  }
-};
+import { AuthContext } from "./context/AuthContext.jsx";
 
-// protected route that uses above checkAuth function
 const PrivateRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const { user, loading } = useContext(AuthContext);
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const result = await checkAuthentication();
-      setIsAuthenticated(true);
-    };
-    checkAuth();
-  }, []);
-
-  if (isAuthenticated === null) {
-    return <div>Loading...</div>; 
-  }
-
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  if (loading) return <div>Loading...</div>;
+  return user ? children : <Navigate to="/login" />;
 };
 
 function App() {
@@ -47,8 +26,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/dashboard"
           element={
@@ -57,7 +36,14 @@ function App() {
             </PrivateRoute>
           }
         />
-
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </Router>

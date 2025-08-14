@@ -6,9 +6,9 @@ import satelliteIconImg from "../../../public/satellite.png";
 
 const satelliteIcon = L.icon({
   iconUrl: satelliteIconImg,
-  iconSize: [40, 40], 
-  iconAnchor: [20, 20], 
-  popupAnchor: [0, -20], 
+  iconSize: [40, 40],
+  iconAnchor: [20, 20],
+  popupAnchor: [0, -20],
 });
 
 function ISSMap() {
@@ -30,7 +30,15 @@ function ISSMap() {
   }, []);
 
   return (
-    <div style={{ width: "600px", height: "400px", borderRadius: "20px", overflow: "hidden", boxShadow: "0 0 30px #00ffe0" }}>
+    <div
+      style={{
+        width: "600px",
+        height: "400px",
+        borderRadius: "20px",
+        overflow: "hidden",
+        boxShadow: "0 0 30px #00ffe0",
+      }}
+    >
       <MapContainer
         center={[issPosition.lat, issPosition.lon]}
         zoom={2}
@@ -41,11 +49,16 @@ function ISSMap() {
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
         />
-        <Marker position={[issPosition.lat, issPosition.lon]} icon={satelliteIcon}>
+        <Marker
+          position={[issPosition.lat, issPosition.lon]}
+          icon={satelliteIcon}
+        >
           <Popup>
             <div style={{ color: "#00ffe0", fontWeight: "bold" }}>
-              🚀 ISS Current Position<br />
-              Lat: {issPosition.lat.toFixed(2)}<br />
+              🚀 ISS Current Position
+              <br />
+              Lat: {issPosition.lat.toFixed(2)}
+              <br />
               Lon: {issPosition.lon.toFixed(2)}
             </div>
           </Popup>

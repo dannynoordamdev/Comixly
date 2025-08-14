@@ -1,4 +1,4 @@
-import "../../Styling/Dashboardstyling.css";
+import "../../Styling/Profilestyling.css";
 import ISSMap from "./ISSMap";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -17,18 +17,18 @@ function Dashboard() {
       setError(err.message);
     }
   };
-  const handleProfileReferal = (e) => {
+  const handleDashboardReferal = (e) => {
     e.preventDefault();
-    navigate("/profile");
+    navigate("/dashboard");
   };
 
   return (
-    <div className="dashboard-wrapper">
-      <div className="dashboard-card">
-        <div className="information-part">
+    <div className="profile-wrapper">
+      <div className="profile-card">
+        <div className="profile-information-part">
           <p className="label">Welcome {userDetail.email}</p>
           <div className="actions">
-            <button onClick={handleProfileReferal}>Profile</button>
+            <button onClick={handleDashboardReferal}>Dashboard</button>
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
@@ -40,23 +40,13 @@ function Dashboard() {
 
         <hr className="content-divider" />
 
-        <div className="grid grid-2">
+        <div className="grid grid-1">
           <div className="card">
-            <h2 className="card-title">A</h2>
-          </div>
-          <div className="card">
-            <h2 className="card-title">Box 2</h2>
+            <h2 className="card-title">
+              Future Profile CRUD actions come here!
+            </h2>
           </div>
         </div>
-
-        <hr className="content-divider" />
-
-        <div className="app-status-card">
-          <h3 className="card-title">Current running services:</h3>
-          <div className="grid grid-4"></div>
-        </div>
-
-        <hr className="content-divider" />
       </div>
     </div>
   );
