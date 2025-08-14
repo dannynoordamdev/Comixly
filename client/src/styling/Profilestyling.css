@@ -1,0 +1,153 @@
+.profile-wrapper {
+  width: calc(100vw - 100px);
+  max-width: 1600px;
+  margin: 25px auto;
+  padding: 25px;
+  min-height: calc(100vh - 50px);
+  border-radius: 50px;
+  background-color: #272b3350;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.profile-information-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  height: 50px;
+}
+
+.label {
+  font-weight: 600;
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  line-height: 1;
+}
+
+.profile-information-part .logout-btn {
+  color: #e57373;
+}
+.profile-information-part .actions {
+  display: flex;
+  gap: 10px;
+}
+.image-container {
+  display: block;
+  border-radius: 5%;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10;
+}
+
+.actions button {
+  padding: 0 10px;
+  font-size: 0.9rem;
+  height: 36px;
+  width: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.103);
+  padding: 16px;
+  margin: 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.61);
+}
+
+.card-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  color: white;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.service-card:hover {
+  transform: scale(1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.service-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.content-divider {
+  opacity: 20%;
+}
+
+.value {
+  font-weight: 500;
+  color: #eee;
+}
+
+.status-text.online {
+  color: #00e676;
+  font-weight: 600;
+}
+
+.status-text.offline {
+  color: #e57373;
+}
+
+.app-status-card {
+  background: rgba(255, 255, 255, 0.103);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.61);
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.logout {
+  color: #64ffda;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 100%;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background: rgba(100, 255, 218, 0.1);
+  border-color: rgba(100, 255, 218, 0.4);
+}

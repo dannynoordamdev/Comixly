@@ -1,0 +1,58 @@
+.access-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  width: 550px;
+}
+.access-container .title {
+  font-size: 2rem;
+}
+.access-container .warning {
+  color: rgb(170, 170, 170);
+  font-size: 0.8rem;
+  text-align: center;
+  padding-top: 20px;
+  max-width: 500px;
+}
+
+.access-container #last-line {
+  padding-top: 50px;
+  font-size: 0.9rem;
+}
+
+.link-button {
+  all: unset;
+  color: rgb(131, 143, 255);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline 0.4px;
+}
+
+.link-button:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.input-group {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10px;
+}
+
+.input-group input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px solid;
+  background-color: rgba(125, 139, 152, 0.387);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.61);
+}
+
+.input-group button {
+  margin-top: 15px;
+  width: 100%;
+}
