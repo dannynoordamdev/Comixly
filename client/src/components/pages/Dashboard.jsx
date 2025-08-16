@@ -1,5 +1,5 @@
 import "../../Styling/Dashboardstyling.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import React from "react";
@@ -27,7 +27,12 @@ function Dashboard() {
       <div className="dashboard-card">
         {/* Header */}
         <div className="information-part">
-          <p className="label">Welcome {userDetail.email}</p>
+          <p className="label">
+            Welcome
+            {userDetail?.email
+              ? `, ${userDetail.email}`
+              : ". Please update your profile."}{" "}
+          </p>
           <div className="actions">
             <button onClick={handleProfileReferal}>Profile</button>
             <button onClick={handleLogout} className="logout-btn">

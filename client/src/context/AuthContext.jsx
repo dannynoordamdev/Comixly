@@ -12,7 +12,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [userDetail, setUserDetail] = useState(null);
+  const [userDetail, setUserDetail] = useState({});
 
   useEffect(() => {
     loadUserData();
@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }) => {
       } else {
         setUserDetail(null);
       }
+
+      return currentUser;
     } finally {
       setLoading(false);
     }
@@ -45,9 +47,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await registerUser(email, password);
       await loginUser(email, password);
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
-      return currentUser;
+      await loadUserData();
     } finally {
       setLoading(false);
     }

@@ -168,13 +168,38 @@ async def activate_account(user: user_dependency, db: db_dep):
 
     user_model = db.query(Users).filter(Users.id == user.get("id")).first()
 
-    if user_model.is_activated:
+    if user_model.is_activated and not user_model.is_deactivated:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Account is already activated.",
         )
 
     user_model.is_activated = True
+    user_model.is_deactivated = False
+
+    db.commit()
+    db.refresh(user_model)
+
+    return status.HTTP_204_NO_CONTENT
+
+
+## implement deactivation!
+@router.put("/users/me/deactivate", status_code=status.HTTP_204_NO_CONTENT)
+async def deactivate_account(user: user_dependency, db: db_dep):
+    if user is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Authentication Required."
+        )
+
+    user_model = db.query(Users).filter(Users.id == user.get("id")).first()
+
+    if user_model.is_deactivated:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Account is already deactivated.",
+        )
+
+    user_model.is_deactivated = True
 
     db.commit()
     db.refresh(user_model)

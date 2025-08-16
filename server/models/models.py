@@ -9,6 +9,7 @@ class Users(Base):
     email = Column(String, unique=True)
     hashed_password = Column(String)
     is_activated = Column(Boolean)
+    is_deactivated = Column(Boolean, default=False)
     profile = relationship(
         "UserProfile", back_populates="user", cascade="all, delete-orphan"
     )

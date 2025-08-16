@@ -1,6 +1,6 @@
 .dashboard-wrapper {
   width: calc(100vw - 100px);
-  max-width: 1600px;
+  max-width: 100%;
   margin: 25px auto;
   padding: 25px;
   min-height: calc(100vh - 50px);
@@ -8,6 +8,9 @@
   background-color: #272b3350;
   box-sizing: border-box;
   overflow-x: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  
 }
 
 .information-part {

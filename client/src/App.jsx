@@ -10,7 +10,6 @@ import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import Dashboard from "./components/pages/Dashboard";
 import NotFound from "./components/pages/NotFound";
-import Profile from "./components/pages/Profile.jsx";
 
 import { AuthContext } from "./context/AuthContext.jsx";
 
@@ -36,14 +35,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
+
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </Router>

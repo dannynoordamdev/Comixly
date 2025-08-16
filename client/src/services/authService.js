@@ -13,7 +13,8 @@ export async function login(email, password) {
   });
 
   if (!res.ok) {
-    throw new Error("Invalid credentials");
+    const errorData = await res.json();
+    throw new Error(errorData.detail || "Registration failed");
   }
 
   const data = await res.json();

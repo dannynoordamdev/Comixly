@@ -112,6 +112,13 @@ async def login_for_access_token(
             detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
+
+    if user.is_deactivated:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="This account has been deactivated.",
+        )
+
     token = create_access_token(
         email=user.email,
         user_id=user.id,
