@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../Styling/homestyling.css";
+import "../../Styling/HomeStyling.css";
 
 function Home() {
   const navigate = useNavigate();
