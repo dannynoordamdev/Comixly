@@ -3,7 +3,7 @@ from typing import Annotated
 from dependencies.db_dependency import db_dep
 from fastapi import APIRouter, Depends, HTTPException
 from models.models import Users
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr, Field
 from sqlalchemy.orm import joinedload
 from starlette import status
 
@@ -16,7 +16,7 @@ user_dependency = Annotated[dict, Depends(get_current_user)]
 
 ## We let the client handle:
 class UserRequestInput(BaseModel):
-    email: str = Field(min_length=6, max_length=60)
+    email: EmailStr = Field(min_length=6, max_length=60)
 
     model_config = {
         "json_schema_extra": {
