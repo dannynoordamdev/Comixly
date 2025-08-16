@@ -1,12 +1,11 @@
 import "../../Styling/Dashboardstyling.css";
-import ISSMap from "./ISSMap";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function Dashboard() {
-  const { userDetail } = useContext(AuthContext);
-  const { logout } = useContext(AuthContext);
+  const { userDetail, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
@@ -14,9 +13,10 @@ function Dashboard() {
     try {
       await logout();
     } catch (err) {
-      setError(err.message);
+      console.error(err.message);
     }
   };
+
   const handleProfileReferal = (e) => {
     e.preventDefault();
     navigate("/profile");
@@ -25,6 +25,7 @@ function Dashboard() {
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-card">
+        {/* Header */}
         <div className="information-part">
           <p className="label">Welcome {userDetail.email}</p>
           <div className="actions">
@@ -33,7 +34,7 @@ function Dashboard() {
               Logout
             </button>
             <div>
-              <img className="image-container" src="vite.svg" alt="" />
+              <img className="image-container" src="vite.svg" alt="logo" />
             </div>
           </div>
         </div>
@@ -42,21 +43,13 @@ function Dashboard() {
 
         <div className="grid grid-2">
           <div className="card">
-            <h2 className="card-title">A</h2>
+            <h2 className="card-title"></h2>
           </div>
+
           <div className="card">
-            <h2 className="card-title">Box 2</h2>
+            <h2 className="card-title"></h2>
           </div>
         </div>
-
-        <hr className="content-divider" />
-
-        <div className="app-status-card">
-          <h3 className="card-title">Current running services:</h3>
-          <div className="grid grid-4"></div>
-        </div>
-
-        <hr className="content-divider" />
       </div>
     </div>
   );
