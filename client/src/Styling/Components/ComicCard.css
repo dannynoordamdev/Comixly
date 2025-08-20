@@ -79,6 +79,7 @@
   cursor: pointer;
   align-self: flex-start;
   transition: background 0.2s;
+  margin-top: 8px;
 }
 
 .comic-card-button:hover {

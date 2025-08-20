@@ -13,11 +13,20 @@ const PopularComics = () => {
         const res = await fetch(
           "https://api.stellarsightings.app/popular-comics"
         );
-        if (!res.ok) throw new Error("Failed to fetch popular comics");
+
+        if (!res.ok) {
+          console.error("Error fetching comics:", res.status);
+          setResults([]);
+          setLoading(false);
+          return;
+        }
+
         const data = await res.json();
+        console.log("Popular comics API response:", data);
         setResults(data.popular_comics || []);
       } catch (err) {
-        setError(err.message);
+        console.error("Error fetching comics:", err);
+        setResults([]);
       } finally {
         setLoading(false);
       }
@@ -32,21 +41,17 @@ const PopularComics = () => {
 
   return (
     <div className="comic-card-grid">
-      {results.map((comic) => {
-        const desc = comic.description || "No description available";
-        const shortDesc = desc.length > 30 ? desc.slice(0, 30) + "..." : desc;
-
-        return (
-          <ComicCard
-            key={comic.id}
-            image={comic.image || "https://via.placeholder.com/220x160"}
-            title={comic.name}
-            author={comic.publisher || "Unknown"}
-            year={comic.start_year || "N/A"}
-            description={shortDesc}
-          />
-        );
-      })}
+      {results.map((comic) => (
+        <ComicCard
+          key={comic.id}
+          id={comic.id}
+          title={comic.volume_name || comic.title}
+          author={comic.title}
+          year={comic.cover_date?.slice(0, 4) || "N/A"}
+          image={comic.image || "https://via.placeholder.com/220x160"}
+          className="comic-card-populair"
+        />
+      ))}
     </div>
   );
 };

@@ -1,15 +1,34 @@
 import React from "react";
 import "../Styling/Components/ComicCard.css";
-
-const ComicCard = ({ image, title, author, year, description }) => {
+import { useNavigate } from "react-router-dom";
+const ComicCard = ({
+  id,
+  image,
+  title,
+  author,
+  year,
+  description,
+  className = "",
+}) => {
   const [onReadList, setOnReadList] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleReadListToggle = () => {
     setOnReadList((prev) => !prev);
   };
 
+  const handleCardClick = () => {
+    if (id) {
+      navigate(`/comic/${id}`);
+    }
+  };
+
   return (
-    <div className="comic-card">
+    <div
+      className="comic-card"
+      onClick={handleCardClick}
+      style={{ cursor: "pointer" }}
+    >
       <div className="comic-card-image">
         <img src={image || "https://via.placeholder.com/220x320"} alt={title} />
       </div>
@@ -18,7 +37,7 @@ const ComicCard = ({ image, title, author, year, description }) => {
         <h3 className="comic-card-title">{title}</h3>
         {author && <div className="comic-card-meta">{author}</div>}
         {year && <div className="comic-card-meta">{year}</div>}
-        {description && <p className="comic-card-description">{description}</p>}
+        <span></span>
         <button className="comic-card-button" onClick={handleReadListToggle}>
           {onReadList ? "Remove from Read List" : "Add to Read List"}
         </button>

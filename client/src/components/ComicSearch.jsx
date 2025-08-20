@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ComicCard from "./ComicCard"; // make sure the path is correct
+import ComicCard from "./ComicCard";
 import "../Styling/Components/ComicSearch.css";
 
 function ComicSearch() {
@@ -10,15 +10,14 @@ function ComicSearch() {
   const [generation, setGeneration] = useState("");
 
   const handleSearch = async () => {
-    if (!searchTerm.trim()) return; // don't search empty strings
+    if (!searchTerm.trim()) return;
 
     setLoading(true);
     try {
-      // Call your FastAPI backend
       const response = await fetch(
         `https://api.stellarsightings.app/comic-series/${encodeURIComponent(
           searchTerm
-        )}?limit=10`
+        )}?limit=20`
       );
 
       if (!response.ok) {
@@ -91,8 +90,6 @@ function ComicSearch() {
         {!loading &&
           results.map((comic) => {
             const desc = comic.description || "No description available";
-            const shortDesc =
-              desc.length > 30 ? desc.slice(0, 30) + "..." : desc;
             return (
               <ComicCard
                 key={comic.id}
