@@ -1,28 +1,28 @@
-# StellarSightings 🛸
+# Comixly.
 
-**StellarSightings** lets users explore recent UFO sightings, track the International Space Station (ISS) live, and monitor space weather events. This project was built to expand my knowledge of **FastAPI** and **React** through a practical, full-stack application.
+**Comixly** is a web app for exploring and tracking your favorite comics, enhanced with AI-powered features. Discover new comics, get personalized recommendations based on your activity and points, and manage your collection with ease. This project was built to deepen my experience with **FastAPI** and **React** in a full-stack environment.
 
 ## Implemented Features
 
 - **OAuth2 Authentication**  
-  Sign in securely with GitHub or Google accounts.
+  Secure sign-in with GitHub or Google accounts.
 
-- **UFO Sightings**  
-  Fetch recent sightings from public UFO databases.
+- **Comic Exploration**  
+  Browse and search a wide range of comics from various sources.
 
-- **Real-time ISS Tracking**  
-  Stream live ISS position updates with WebSockets.
+- **AI Recommendations**  
+  Get personalized comic suggestions based on your reading history and points.
 
-- **Space Weather Monitoring**  
-  Display current solar activity and meteor showers.
+- **Points System**  
+  Earn points for reading, reviewing, and tracking comics.
 
-- **Report UFO Sightings**  
-  Logged-in users can submit new sightings, stored securely.
+- **Track & Manage Collection**  
+  Add comics to your personal library and monitor your progress.
 
 - **React Frontend**  
-  Interactive dashboard featuring maps, charts, and real-time updates.
+  Interactive dashboard with lists, recommendations, and real-time updates.
 
 - **Secure Data Handling**  
-  Encrypt user tokens and run the backend over HTTPS.
+  User data and tokens are encrypted, with backend served over HTTPS.
 
 ---
