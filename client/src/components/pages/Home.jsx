@@ -12,12 +12,12 @@ function Home() {
   return (
     <>
       <div className="home-main-content">
-        <h1 className="title">StellarSightings</h1>
+        <h1 className="title">Comixly.</h1>
         <h2 className="subtitle">
-          All things Space and cosmic happenings in one place.
+          All things comics and graphic novels in one place.
         </h2>
         <h3 className="subtitle-followup">
-          Track sightings, satellites, and space weather effortlessly.
+          Track your favorite series, authors, and new releases effortlessly.
         </h3>
         <p className="footer-text">Programmed by Dannynoordamdev</p>
 

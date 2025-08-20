@@ -1,0 +1,7 @@
+.comic-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  justify-items: center;
+  margin: 16px 0;
+}

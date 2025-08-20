@@ -1,0 +1,63 @@
+/* ComicSearch.css */
+
+.comic-search-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  border-color: rgba(100, 255, 218, 0.4);
+}
+
+select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 20%;
+}
+select:focus {
+  border-color: rgba(100, 255, 218, 0.4);
+}
+
+.button-search {
+  all: unset;
+  padding: 8px 18px;
+  background-color: rgba(100, 255, 218, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.button-search:hover {
+  background-color: rgba(100, 255, 218, 0.2);
+}
+
+.search-results {
+  border-radius: 6px;
+  margin-top: 24px;
+  height: 50vh;
+  margin-left: 30px;
+  margin-right: 30px;
+  scroll-behavior: auto;
+  overflow-y: auto;
+}

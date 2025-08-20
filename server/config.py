@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    nasa_api_key: str
+    comic_api_key: str
     secret_key: str
     algorithm: str
 

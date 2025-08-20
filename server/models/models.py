@@ -30,3 +30,18 @@ class UserProfile(Base):
 @event.listens_for(Users, "after_insert")
 def create_profile(mapper, connection, target):
     connection.execute(UserProfile.__table__.insert().values(user_id=target.id))
+
+class Comic(Base):
+    __tablename__ = "comics"
+    id = Column(Integer, primary_key=True, index=True)
+    comic_title = Column(String, nullable=False)
+    comic_description = Column(String, nullable=True)
+    series_list = relationship("Series", back_populates="comic", cascade="all, delete-orphan")
+
+class Series(Base):
+    __tablename__ = "series"
+    id = Column(Integer, primary_key=True, index=True)
+    series_title = Column(String, nullable=False)
+    series_description = Column(String, nullable=True)
+    comic_id = Column(Integer, ForeignKey("comics.id", ondelete="CASCADE"))
+    comic = relationship("Comic", back_populates="series_list")
