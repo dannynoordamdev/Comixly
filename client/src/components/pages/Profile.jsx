@@ -2,12 +2,9 @@ import "../../Styling/DashboardStyling.css";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import ComicSearch from "../ComicSearch";
-import AIRecommendation from "../AIRecommendation";
-import PopularComics from "../PopularComics";
 import React from "react";
 
-function Dashboard() {
+function Profile() {
   const { userDetail, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -22,7 +19,7 @@ function Dashboard() {
 
   const handleProfileReferal = (e) => {
     e.preventDefault();
-    navigate("/profile");
+    navigate("/dashboard");
   };
 
   return (
@@ -37,7 +34,7 @@ function Dashboard() {
               : ". Please update your profile."}{" "}
           </p>
           <div className="actions">
-            <button onClick={handleProfileReferal}>Profile</button>
+            <button onClick={handleProfileReferal}>Dashboard</button>
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
@@ -48,30 +45,14 @@ function Dashboard() {
         </div>
 
         <hr className="content-divider" />
-        <div className="grid grid-2">
-          <div className="card">
-            <h2 className="card-title">AI Recommends:</h2>
-            <p className="card-description">
-              Based on your reading history, we recommend these comics.
-            </p>
-            <div className="recommended-comics">
-              <AIRecommendation />
-            </div>
-          </div>
 
-          <div className="card">
-            <h2 className="card-title">Popular Comics:</h2>
-            <PopularComics />
-          </div>
-        </div>
         <div className="grid grid-1">
           <div className="card">
-            <h2 className="card-title">Comic Series</h2>
-            <ComicSearch />
+            <h2 className="card-title"></h2>
           </div>
 
           <div className="card">
-            <h2 className="card-title">Your Library:</h2>
+            <h2 className="card-title"></h2>
           </div>
         </div>
       </div>
@@ -79,4 +60,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Profile;
