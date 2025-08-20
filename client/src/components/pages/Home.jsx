@@ -14,7 +14,7 @@ function Home() {
       <div className="home-main-content">
         <h1 className="title">StellarSightings</h1>
         <h2 className="subtitle">
-          All things UFOs, ISS, and cosmic happenings in one place.
+          All things Space and cosmic happenings in one place.
         </h2>
         <h3 className="subtitle-followup">
           Track sightings, satellites, and space weather effortlessly.
