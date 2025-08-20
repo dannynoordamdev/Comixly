@@ -10,7 +10,9 @@ const PopularComics = () => {
   useEffect(() => {
     const fetchComics = async () => {
       try {
-        const res = await fetch("http://localhost:8000/popular-comics");
+        const res = await fetch(
+          "https://api.stellarsightings.app/popular-comics"
+        );
         if (!res.ok) throw new Error("Failed to fetch popular comics");
         const data = await res.json();
         setResults(data.popular_comics || []);

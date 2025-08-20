@@ -16,7 +16,7 @@ function ComicSearch() {
     try {
       // Call your FastAPI backend
       const response = await fetch(
-        `http://localhost:8000/comic-series/${encodeURIComponent(
+        `https://api.stellarsightings.app/comic-series/${encodeURIComponent(
           searchTerm
         )}?limit=10`
       );
