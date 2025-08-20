@@ -21,7 +21,7 @@
   display: block;
 }
 
-/* Overlay container, hidden by default */
+/* Overlay   container, hidden by default */
 .comic-card-overlay {
   position: absolute;
   bottom: 0;
