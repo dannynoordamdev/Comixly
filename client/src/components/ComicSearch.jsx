@@ -15,7 +15,7 @@ function ComicSearch() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.stellarsightings.app/comic-series/${encodeURIComponent(
+        `https://api.comixly.tech/comic-series/${encodeURIComponent(
           searchTerm
         )}?limit=20`
       );

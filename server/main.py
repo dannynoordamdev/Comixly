@@ -25,8 +25,8 @@ Base.metadata.create_all(bind=engine)
 
 origins = [
     "http://localhost:5173",               # dev
-    "https://stellarsightings.app",        # production
-    "https://www.stellarsightings.app",    # www production
+    "https://comixly.tech",        # production
+    "https://www.comixly.tech",    # www production
 ]
 
 app.add_middleware(

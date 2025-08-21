@@ -1,4 +1,4 @@
-const API_URL = "https://api.stellarsightings.app";
+const API_URL = "https://api.comixly.tech";
 
 // Retrieve info of current logged in user:
 export async function userInfo() {

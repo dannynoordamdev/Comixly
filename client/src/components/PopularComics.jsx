@@ -10,9 +10,7 @@ const PopularComics = () => {
   useEffect(() => {
     const fetchComics = async () => {
       try {
-        const res = await fetch(
-          "https://api.stellarsightings.app/popular-comics"
-        );
+        const res = await fetch("https://api.comixly.tech/popular-comics");
 
         if (!res.ok) {
           console.error("Error fetching comics:", res.status);
