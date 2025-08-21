@@ -36,7 +36,7 @@ const LoginPage = () => {
 
   return (
     <div className="access-container">
-      <h1 className="title">Enter StellarSightings</h1>
+      <h1 className="title">Enter Comixly.</h1>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleLogin} className="input-group">
         <label htmlFor="Username">Email</label>
@@ -67,7 +67,7 @@ const LoginPage = () => {
       </form>
 
       <span className="warning" id="last-line">
-        New to StellarSightings?{" "}
+        New to Comixly?{" "}
         <button
           type="button"
           className="link-button"

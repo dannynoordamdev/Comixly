@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ComicSearch from "../ComicSearch";
 import AIRecommendation from "../AIRecommendation";
 import PopularComics from "../PopularComics";
+import Library from "../Library";
 import React from "react";
 
 function Dashboard() {
@@ -25,6 +26,11 @@ function Dashboard() {
     navigate("/profile");
   };
 
+  const handleBlogReferal = (e) => {
+    e.preventDefault();
+    window.open("https://blog.comixly.app", "_blank");
+  };
+
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-card">
@@ -32,12 +38,14 @@ function Dashboard() {
         <div className="information-part">
           <p className="label">
             Welcome
-            {userDetail?.email
-              ? `, ${userDetail.email}`
-              : ". Please update your profile."}{" "}
+            {userDetail?.username
+              ? `, ${userDetail.username}`
+              : `, ${userDetail.email}`}
           </p>
           <div className="actions">
             <button onClick={handleProfileReferal}>Profile</button>
+            <button onClick={handleBlogReferal}>Blog</button>
+
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
@@ -48,19 +56,30 @@ function Dashboard() {
         </div>
 
         <hr className="content-divider" />
+        <div className="grid grid-1">
+          <div className="card">
+            <h2 className="card-title">Your Library:</h2>
+            <p className="card-description">
+              View your saved comics and reading history.
+            </p>
+            <Library />
+          </div>
+        </div>
         <div className="grid grid-2">
           <div className="card">
-            <h2 className="card-title">AI Recommends:</h2>
+            <h2 className="card-title">Comixly Recommends:</h2>
             <p className="card-description">
-              Based on your reading history, we recommend these comics.
+              Based on your reading history, Comixly AI recommends these comics.
             </p>
+            <hr />
+
             <div className="recommended-comics">
               <AIRecommendation />
             </div>
           </div>
 
           <div className="card">
-            <h2 className="card-title">Popular Comics:</h2>
+            <h2 className="card-title">Popular Today:</h2>
             <PopularComics />
           </div>
         </div>
@@ -68,10 +87,6 @@ function Dashboard() {
           <div className="card">
             <h2 className="card-title">Comic Series</h2>
             <ComicSearch />
-          </div>
-
-          <div className="card">
-            <h2 className="card-title">Your Library:</h2>
           </div>
         </div>
       </div>
