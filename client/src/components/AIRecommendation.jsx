@@ -19,8 +19,8 @@ const AIRecommendation = () => {
 
   return (
     <div>
-      {recommendations.length === 0 ? (
-        <p>No new recommendations. You're subscribed to all comics!</p>
+      {recommendations.length < 10 ? (
+        <p>Please add comics to your list first to receive recommendations.</p>
       ) : (
         <ul>
           {recommendations.map((comic) => (

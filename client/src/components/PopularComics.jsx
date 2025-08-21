@@ -39,7 +39,7 @@ const PopularComics = () => {
 
   return (
     <div className="comic-card-grid">
-      {results.map((comic) => (
+      {results.slice(0, 8).map((comic) => (
         <ComicCard
           key={comic.id}
           id={comic.id}
