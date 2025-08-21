@@ -26,6 +26,11 @@ function Dashboard() {
     navigate("/profile");
   };
 
+  const handleBlogReferal = (e) => {
+    e.preventDefault();
+    window.open("https://blog.comixly.app", "_blank");
+  };
+
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-card">
@@ -39,6 +44,8 @@ function Dashboard() {
           </p>
           <div className="actions">
             <button onClick={handleProfileReferal}>Profile</button>
+            <button onClick={handleBlogReferal}>Blog</button>
+
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
