@@ -12,6 +12,7 @@ import Dashboard from "./components/pages/Dashboard";
 import NotFound from "./components/pages/NotFound";
 import Profile from "./components/pages/Profile.jsx";
 import ComicPage from "./components/pages/ComicPage.jsx";
+import Library from "./components/Library.jsx";
 
 import { AuthContext } from "./context/AuthContext.jsx";
 

@@ -42,7 +42,7 @@ function ComicSearch() {
       <div className="comic-search-container">
         <input
           type="text"
-          placeholder="Search for comic series..."
+          placeholder="Search for new comic series..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
