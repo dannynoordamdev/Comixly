@@ -21,7 +21,7 @@
   display: block;
 }
 
-/* Overlay container, hidden by default */
+/* Overlay   container, hidden by default */
 .comic-card-overlay {
   position: absolute;
   bottom: 0;
@@ -79,6 +79,7 @@
   cursor: pointer;
   align-self: flex-start;
   transition: background 0.2s;
+  margin-top: 8px;
 }
 
 .comic-card-button:hover {

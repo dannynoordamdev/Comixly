@@ -11,6 +11,7 @@ import RegisterPage from "./components/pages/RegisterPage";
 import Dashboard from "./components/pages/Dashboard";
 import NotFound from "./components/pages/NotFound";
 import Profile from "./components/pages/Profile.jsx";
+import ComicPage from "./components/pages/ComicPage.jsx";
 
 import { AuthContext } from "./context/AuthContext.jsx";
 
@@ -28,6 +29,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
+        <Route
+          path="/comic/:id"
+          element={
+            <PrivateRoute>
+              <ComicPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={

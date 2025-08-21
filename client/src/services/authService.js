@@ -1,4 +1,4 @@
-const API_URL = "https://api.stellarsightings.app";
+const API_URL = "https://api.comixly.tech";
 
 // Login function
 export async function login(email, password) {

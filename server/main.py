@@ -22,7 +22,13 @@ app.include_router(user_router, tags=["Authentication"])
 
 Base.metadata.create_all(bind=engine)
 
-origins = ["http://localhost:5173"]
+
+origins = [
+    "http://localhost:5173",               # dev
+    "https://comixly.tech",        # production
+    "https://www.comixly.tech",    # www production
+]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
