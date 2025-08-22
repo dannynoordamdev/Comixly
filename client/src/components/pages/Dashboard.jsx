@@ -28,7 +28,7 @@ function Dashboard() {
 
   const handleBlogReferal = (e) => {
     e.preventDefault();
-    window.location.href = "https://blog.comixly.app";
+    window.location.href = "https://blog.comixly.tech";
   };
 
   return (
