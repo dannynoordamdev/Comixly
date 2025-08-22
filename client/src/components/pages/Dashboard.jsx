@@ -56,15 +56,7 @@ function Dashboard() {
         </div>
 
         <hr className="content-divider" />
-        <div className="grid grid-1">
-          <div className="card">
-            <h2 className="card-title">Your Library:</h2>
-            <p className="card-description">
-              View your saved comics and reading history.
-            </p>
-            <Library />
-          </div>
-        </div>
+
         <div className="grid grid-2">
           <div className="card">
             <h2 className="card-title">Comixly Recommends:</h2>
@@ -81,6 +73,15 @@ function Dashboard() {
           <div className="card">
             <h2 className="card-title">Popular Today:</h2>
             <PopularComics />
+          </div>
+        </div>
+        <div className="grid grid-1">
+          <div className="card">
+            <h2 className="card-title">Your Library:</h2>
+            <p className="card-description">
+              View your saved comics and reading history.
+            </p>
+            <Library />
           </div>
         </div>
         <div className="grid grid-1">
