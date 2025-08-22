@@ -28,7 +28,7 @@ function Dashboard() {
 
   const handleBlogReferal = (e) => {
     e.preventDefault();
-    window.open("https://blog.comixly.app", "_blank");
+    window.location.href = "https://blog.comixly.app";
   };
 
   return (
