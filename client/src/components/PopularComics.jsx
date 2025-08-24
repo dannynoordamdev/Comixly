@@ -33,13 +33,13 @@ const PopularComics = () => {
     fetchComics();
   }, []);
 
-  if (loading) return <p>Loading popular comics...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (results.length === 0) return <p>No popular comics found.</p>;
+  // if (loading) return <p>Loading popular comics...</p>;
+  // if (error) return <p>Error: {error}</p>;
+  // if (results.length === 0) return <p>No popular comics found.</p>;
 
   return (
     <div className="comic-card-grid">
-      {results.slice(0, 8).map((comic) => (
+      {results.slice(0, 4).map((comic) => (
         <ComicCard
           key={comic.id}
           id={comic.id}

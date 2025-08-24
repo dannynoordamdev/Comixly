@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query, status
+from fastapi import APIRouter, Form, Query, status
 from typing import Annotated
 from dependencies.db_dependency import db_dep
 from fastapi import APIRouter, Depends, HTTPException
@@ -15,12 +15,18 @@ router = APIRouter()
 user_dependency = Annotated[dict, Depends(get_current_user)]
 
 @router.post("/user/library", status_code=status.HTTP_201_CREATED)
-async def create_user_library(name: str, user: user_dependency, db: db_dep):
+async def create_user_library(
+    user: user_dependency, 
+    db: db_dep,
+    name: str = Form(...)
+
+):
     new_library = ComicLibrary(user_id=user["id"], name=name)
     db.add(new_library)
     db.commit()
     db.refresh(new_library)
     return {"library": new_library}
+
 
 @router.get("/user/library", status_code=status.HTTP_200_OK)
 async def get_user_library(user: user_dependency, db: db_dep):

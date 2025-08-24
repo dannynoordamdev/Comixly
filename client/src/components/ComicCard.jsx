@@ -21,8 +21,8 @@ const ComicCard = ({ id, image, title, author, year, className = "" }) => {
   };
 
   return (
-    <div className="comic-card">
-      <div className="comic-card-image">
+    <div className={`comic-card ${className}`} onClick={handleCardClick}>
+      <div className="comic-card-image" onClick={handleCardClick}>
         <img src={image || "https://via.placeholder.com/220x320"} alt={title} />
       </div>
 

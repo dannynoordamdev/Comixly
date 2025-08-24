@@ -4,6 +4,7 @@
   margin: 25px auto;
   padding: 25px;
   min-height: calc(100vh - 50px);
+  max-height: 90vh;
   border-radius: 50px;
   background-color: #272b3350;
   box-sizing: border-box;
