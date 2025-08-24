@@ -20,7 +20,10 @@ const AIRecommendation = () => {
   return (
     <div>
       {recommendations.length < 10 ? (
-        <p>Please add comics to your list first to receive recommendations.</p>
+        <p>
+          Not enough data just yet, keep reading and Comixly will learn your
+          preferences.
+        </p>
       ) : (
         <ul>
           {recommendations.map((comic) => (

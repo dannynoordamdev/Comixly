@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers.auth import router as auth_router
 from routers.comic import router as comic_router
 from routers.user import router as user_router
+from routers.comic_library import router as comic_library_router
 
 app = FastAPI()
 
@@ -18,7 +19,7 @@ def health_check():
 app.include_router(comic_router, tags=["Comics"])
 app.include_router(auth_router, tags=["Authentication"])
 app.include_router(user_router, tags=["Authentication"])
-
+app.include_router(comic_library_router, tags=["Comic Library"])
 
 Base.metadata.create_all(bind=engine)
 
