@@ -11,7 +11,7 @@ function Library() {
     const fetchLibraries = async () => {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:8000/user/library", {
+        const res = await fetch("https://api.comixly.tech/user/library", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -34,7 +34,7 @@ function Library() {
     setLoading(true);
     try {
       const params = { name: newLibraryName };
-      const res = await fetch("http://localhost:8000/user/library", {
+      const res = await fetch("https://api.comixly.tech/user/library", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -59,7 +59,7 @@ function Library() {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:8000/user/library?library_id=${id}`,
+        `https://api.comixly.tech/user/library?library_id=${id}`,
         {
           method: "DELETE",
           headers: {
