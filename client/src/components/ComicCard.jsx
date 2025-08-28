@@ -1,16 +1,9 @@
 import React from "react";
 import "../Styling/Components/ComicCard.css";
 import { useNavigate } from "react-router-dom";
-const ComicCard = ({
-  id,
-  image,
-  title,
-  author,
-  year,
-  description,
-  className = "",
-}) => {
+const ComicCard = ({ id, image, title, author, year, className = "" }) => {
   const [onReadList, setOnReadList] = React.useState(false);
+  const [onSaveList, setOnSaveList] = React.useState(false);
   const navigate = useNavigate();
 
   const handleReadListToggle = () => {
@@ -23,13 +16,13 @@ const ComicCard = ({
     }
   };
 
+  const handleSaveListToggle = (e) => {
+    setOnSaveList((prev) => !prev);
+  };
+
   return (
-    <div
-      className="comic-card"
-      onClick={handleCardClick}
-      style={{ cursor: "pointer" }}
-    >
-      <div className="comic-card-image">
+    <div className={`comic-card ${className}`} onClick={handleCardClick}>
+      <div className="comic-card-image" onClick={handleCardClick}>
         <img src={image || "https://via.placeholder.com/220x320"} alt={title} />
       </div>
 
@@ -38,8 +31,13 @@ const ComicCard = ({
         {author && <div className="comic-card-meta">{author}</div>}
         {year && <div className="comic-card-meta">{year}</div>}
         <span></span>
+
         <button className="comic-card-button" onClick={handleReadListToggle}>
-          {onReadList ? "Remove from Read List" : "Add to Read List"}
+          {onReadList ? "Remove from Library" : "Add to Library"}
+        </button>
+        <span></span>
+        <button className="comic-card-button" onClick={handleSaveListToggle}>
+          {onSaveList ? "Unsave" : "Save"}
         </button>
       </div>
     </div>

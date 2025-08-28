@@ -1,6 +1,9 @@
 from fastapi import FastAPI, APIRouter, HTTPException, status, Query
 import httpx
+from pydantic import BaseModel
 from config import Settings, get_settings
+from models.models import Comic
+from dependencies.db_dependency import db_dep
 
 app = FastAPI()
 router = APIRouter()
@@ -11,6 +14,9 @@ BASE_URL = "https://comicvine.gamespot.com/api"
 HEADERS = {
     "User-Agent": "FastAPI Comic App"  
 }
+
+    
+    
 
 @router.get("/comic-series/{volume_name}", status_code=status.HTTP_200_OK)
 async def get_comic_series(
@@ -111,7 +117,7 @@ async def get_comic_issues(volume_id: int):
 
 @router.get("/popular-comics", status_code=status.HTTP_200_OK)
 async def get_popular_comics(
-    limit: int = Query(10, description="Number of comics to return"),
+    limit: int = Query(8, description="Number of comics to return"),
     sort_by: str = Query("cover_date", description="Field to sort by: cover_date or issue_count")
 ):
     issues_url = f"{BASE_URL}/issues/"
@@ -151,3 +157,4 @@ async def get_popular_comics(
     ]
 
     return {"popular_comics": popular_comics}
+

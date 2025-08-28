@@ -28,7 +28,7 @@ function Dashboard() {
 
   const handleBlogReferal = (e) => {
     e.preventDefault();
-    window.open("https://blog.comixly.app", "_blank");
+    window.location.href = "https://blog.comixly.tech";
   };
 
   return (
@@ -38,9 +38,7 @@ function Dashboard() {
         <div className="information-part">
           <p className="label">
             Welcome
-            {userDetail?.username
-              ? `, ${userDetail.username}`
-              : `, ${userDetail.email}`}
+            {userDetail?.username ? `, ${userDetail.username}` : ` to Comixly.`}
           </p>
           <div className="actions">
             <button onClick={handleProfileReferal}>Profile</button>
@@ -56,36 +54,31 @@ function Dashboard() {
         </div>
 
         <hr className="content-divider" />
-        <div className="grid grid-1">
-          <div className="card">
-            <h2 className="card-title">Your Library:</h2>
-            <p className="card-description">
-              View your saved comics and reading history.
-            </p>
-            <Library />
-          </div>
-        </div>
+
         <div className="grid grid-2">
-          <div className="card">
+          <div className="card recommended-comics">
             <h2 className="card-title">Comixly Recommends:</h2>
             <p className="card-description">
-              Based on your reading history, Comixly AI recommends these comics.
+              Based on your reading history, Comixly AI recommends:
             </p>
             <hr />
 
-            <div className="recommended-comics">
-              <AIRecommendation />
-            </div>
+            <AIRecommendation />
           </div>
 
-          <div className="card">
+          <div className="card popular-today">
             <h2 className="card-title">Popular Today:</h2>
             <PopularComics />
           </div>
         </div>
-        <div className="grid grid-1">
+        <hr className="content-divider-dashboard" />
+        <div className="grid grid-2-library">
           <div className="card">
-            <h2 className="card-title">Comic Series</h2>
+            <h2 className="card-title">Comic Library</h2>
+            <Library />
+          </div>
+          <div className="card">
+            <h2 className="card-title">Search Comics</h2>
             <ComicSearch />
           </div>
         </div>

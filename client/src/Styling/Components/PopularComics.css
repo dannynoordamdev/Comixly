@@ -4,11 +4,28 @@
   gap: 3px;
   justify-items: center;
   margin: 16px 0;
-  height: 60vh;
+  height: 40vh;
   scroll-behavior: auto;
   overflow-y: auto;
 }
 
 .comic-card-populair:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 1149px) {
+  .comic-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    justify-items: center;
+    margin: 10px 0;
+    height: 60vh;
+    scroll-behavior: auto;
+    overflow-y: auto;
+  }
+
+  .comic-card-populair:hover {
+    transform: scale(1.05);
+  }
 }
