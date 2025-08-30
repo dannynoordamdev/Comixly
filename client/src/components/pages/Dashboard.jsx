@@ -48,7 +48,11 @@ function Dashboard() {
               Logout
             </button>
             <div>
-              <img className="image-container" src="vite.svg" alt="logo" />
+              <img
+                className="image-container"
+                src="defaultProfile.png"
+                alt="logo"
+              />
             </div>
           </div>
         </div>
@@ -74,12 +78,12 @@ function Dashboard() {
         <hr className="content-divider-dashboard" />
         <div className="grid grid-2-library">
           <div className="card">
-            <h2 className="card-title">Comic Library</h2>
-            <Library />
-          </div>
-          <div className="card">
             <h2 className="card-title">Search Comics</h2>
             <ComicSearch />
+          </div>
+          <div className="card">
+            <h2 className="card-title">Comic Library</h2>
+            {/* <Library /> */}
           </div>
         </div>
       </div>

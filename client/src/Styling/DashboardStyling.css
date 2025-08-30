@@ -130,11 +130,11 @@
 
 .grid-2 {
   grid-template-columns: repeat(2, 1fr);
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 25% 75%;
 }
 
 .grid.grid-2-library {
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 75% 25%;
 }
 
 .grid-4 {
